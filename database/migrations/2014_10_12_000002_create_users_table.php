@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
         $email = "$random@quizmonstr.com";
         $password = bcrypt($random);
 
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) use ($email, $password) {
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('email')->unique()->default($email);
