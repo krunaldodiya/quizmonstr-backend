@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Repositories\QuizRepository;
 use Carbon\Carbon;
 
-class TestController extends Controller
+class QuizController extends Controller
 {
     protected $quiz;
 
@@ -16,7 +15,7 @@ class TestController extends Controller
         $this->quiz = $quiz;
     }
 
-    public function test(Request $request)
+    public function create(Request $request)
     {
         $now = Carbon::now();
         $registration_expired_at = $now->addMinutes(15);

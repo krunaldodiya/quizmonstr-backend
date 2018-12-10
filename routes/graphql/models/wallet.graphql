@@ -1,4 +1,0 @@
-type Wallet {
-    balance: Int
-    transactions: [Transaction!]!
-}

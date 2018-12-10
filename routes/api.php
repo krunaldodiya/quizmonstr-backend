@@ -18,11 +18,6 @@ Route::group(['prefix' => 'users', 'middleware' => 'auth:api'], function () {
     Route::post('/profile/create', 'UserController@createUserProfile');
 });
 
-Route::group(['prefix' => 'news', 'middleware' => 'auth:api'], function () {
-    Route::post('/latest', 'NewsController@latest');
-    Route::post('/all', 'NewsController@all');
-});
-
 Route::group(['prefix' => 'wallet', 'middleware' => 'auth:api'], function () {
     Route::post('/info', 'UserController@wallet');
 });

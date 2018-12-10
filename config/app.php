@@ -65,7 +65,7 @@ return [
     |
      */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Kolkata',
 
     /*
     |--------------------------------------------------------------------------
@@ -191,7 +191,7 @@ return [
      */
 
     'aliases' => [
-        'NewsRepository' => App\Facades\NewsRepository::class,
+        'QuizRepository' => App\Facades\QuizRepository::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

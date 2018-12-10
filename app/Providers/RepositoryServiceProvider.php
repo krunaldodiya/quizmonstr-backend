@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Repositories\NewsRepository;
+use App\Repositories\QuizRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -25,8 +25,8 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('NewsRepository', function () {
-            return new NewsRepository();
+        $this->app->singleton('QuizRepository', function () {
+            return new QuizRepository();
         });
     }
 }
