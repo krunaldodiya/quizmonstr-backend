@@ -13,12 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        $random = str_random(8);
+        $email = "$random@quizmonstr.com";
+        $password = bcrypt($random);
+
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->string('email')->unique()->default($email);
             $table->string('mobile', 10)->unique()->nullable();
-            $table->string('password')->default(bcrypt(str_random(8)));
+            $table->string('password')->default($password);
             $table->string('gender')->default('Male');
             $table->string('dob', 10)->nullable();
             $table->string('city')->nullable();
