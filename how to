@@ -1,0 +1,7 @@
+1) passport
+---------------------------
+php artisan passport:client --personal
+
+2) telescope (not sure)
+---------------------
+php artisan telescope:install
