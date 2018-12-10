@@ -6,6 +6,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/test', 'TestController@test')->name('test');
+
 Route::get('/terms', 'HomeController@terms')->name('terms');
 
 Route::get('/passport', 'HomeController@passport')->name('passport');

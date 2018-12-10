@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Anand\LaravelPaytmWallet\PaytmWalletServiceProvider::class,
         RobinCSamuel\LaravelMsg91\LaravelMsg91ServiceProvider::class,
+        Weidner\Goutte\GoutteServiceProvider::class,
     ],
 
     /*
@@ -226,6 +227,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PaytmWallet' => Anand\LaravelPaytmWallet\Facades\PaytmWallet::class,
         'LaravelMsg91' => RobinCSamuel\LaravelMsg91\Facades\LaravelMsg91::class,
+        'Goutte' => Weidner\Goutte\GoutteFacade::class,
 
     ],
 
