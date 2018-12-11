@@ -14,18 +14,22 @@ class Quiz extends Model
      */
     protected $fillable = [
         'host_id', 'category_id', 'entry_fee', 'total_participants', 'total_winners', 'total_questions', 'answerable_questions',
-        'question_meta', 'registration_expired_at', 'quiz_expired_at', 'created_at', 'updated_at'
+        'question_meta', 'expired_at', 'created_at', 'updated_at'
     ];
 
-    protected $appends = ['published_at'];
+    protected $appends = ['time_remained'];
 
     protected $dates = ['created_at', 'updated_at'];
 
-    public function getPublishedAtAttribute()
+    public function getTimeRemainedAttribute()
     {
-        $date = $this->attributes['created_at'];
+        $now = Carbon::now();
 
-        return (new Carbon($date))->diffForHumans();
+        if ($now->diffInMinutes($this->expired_at) > 0) {
+            return $now->diffInMinutes($this->expired_at) . str_plural(' minute', $now->diffInMinutes($this->expired_at)) . ' left';
+        }
+
+        return 'Expired';
     }
 
     public function host()

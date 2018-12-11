@@ -18,7 +18,7 @@ class QuizController extends Controller
 
     public function getAll(Request $request)
     {
-        $quiz = Quiz::with('category', 'host')->where('created_at', '>=', Carbon::today())->get();
+        $quiz = Quiz::with('category', 'host')->where('expired_at', '>=', Carbon::now()->addMinutes(5))->get();
 
         return ['quiz' => $quiz];
     }
@@ -26,8 +26,7 @@ class QuizController extends Controller
     public function create(Request $request)
     {
         $now = Carbon::now();
-        $registration_expired_at = $now->addMinutes(15);
-        $quiz_expired_at = $now->addHour(1);
+        $expired_at = $now->addHour(1);
 
         $host_id = auth()->user()->id;
         $category_id = $request->category_id;
@@ -37,8 +36,7 @@ class QuizController extends Controller
             'host_id' => $host_id,
             'category_id' => $category_id,
             'entry_fee' => $entry_fee,
-            'registration_expired_at' => $registration_expired_at,
-            'quiz_expired_at' => $quiz_expired_at,
+            'expired_at' => $expired_at,
         ];
 
         return $this->quiz->createQuiz($payload);

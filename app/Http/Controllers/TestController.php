@@ -10,8 +10,9 @@ class TestController extends Controller
 {
     public function test(Request $request)
     {
-        $quiz = Quiz::with('category', 'host')->where('created_at', '>=', Carbon::today())->get();
-
-        return ['quiz' => $quiz];
+        $user = auth()->user();
+        $user->load('quiz');
+        
+        return $user;
     }
 }

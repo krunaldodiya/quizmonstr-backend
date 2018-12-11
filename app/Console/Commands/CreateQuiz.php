@@ -45,8 +45,7 @@ class CreateQuiz extends Command
     public function handle(QuizRepository $quizRepo)
     {
         $now = Carbon::now();
-        $registration_expired_at = $now->addMinutes(15);
-        $quiz_expired_at = $now->addHour(1);
+        $expired_at = $now->addHour(1);
 
         $from = Carbon::parse('today 10am');
         $to = Carbon::parse('today 8pm');
@@ -60,8 +59,7 @@ class CreateQuiz extends Command
                 'host_id' => $host_id,
                 'category_id' => $category_id,
                 'entry_fee' => $entry_fee,
-                'registration_expired_at' => $registration_expired_at,
-                'quiz_expired_at' => $quiz_expired_at,
+                'expired_at' => $expired_at,
             ]);
         }
     }

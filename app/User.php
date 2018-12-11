@@ -51,4 +51,8 @@ class User extends Authenticatable
         $this->attributes['email'] = strtolower($email);
     }
 
+    public function quiz()
+    {
+        return $this->hasMany(QuizParticipant::class, 'participant_id');
+    }
 }
