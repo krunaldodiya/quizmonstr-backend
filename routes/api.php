@@ -1,13 +1,5 @@
 <?php
 
-Route::get('/', function () {
-    return [
-        'APP_ENV' => env('APP_ENV'),
-    ];
-});
-
-Route::get('/test', 'TestController@test');
-
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/request-otp', 'OtpController@requestOtp');
     Route::post('/verify-otp', 'OtpController@verifyOtp');
@@ -20,4 +12,8 @@ Route::group(['prefix' => 'users', 'middleware' => 'auth:api'], function () {
 
 Route::group(['prefix' => 'wallet', 'middleware' => 'auth:api'], function () {
     Route::post('/info', 'UserController@wallet');
+});
+
+Route::group(['prefix' => 'quiz', 'middleware' => 'auth:api'], function () {
+    Route::post('/all', 'QuizController@getAll');
 });

@@ -22,7 +22,7 @@ class CreateQuizzesTable extends Migration
             $table->integer('total_winners')->default(20);
             $table->integer('total_questions')->default(50);
             $table->integer('answerable_questions')->default(10);
-            $table->text('question_ids')->nullable();
+            $table->text('question_meta')->nullable();
             $table->timestamp('registration_expired_at')->nullable();
             $table->timestamp('quiz_expired_at')->nullable();
             $table->timestamps();

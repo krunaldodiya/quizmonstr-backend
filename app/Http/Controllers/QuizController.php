@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\QuizRepository;
 use Carbon\Carbon;
+use App\Quiz;
 
 class QuizController extends Controller
 {
@@ -13,6 +14,13 @@ class QuizController extends Controller
     public function __construct(QuizRepository $quiz)
     {
         $this->quiz = $quiz;
+    }
+
+    public function getAll(Request $request)
+    {
+        $quiz = Quiz::with('category', 'host')->where('created_at', '>=', Carbon::today())->get();
+
+        return ['quiz' => $quiz];
     }
 
     public function create(Request $request)
